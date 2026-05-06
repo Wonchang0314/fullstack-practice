@@ -12,6 +12,12 @@ Read: /home/wchang101/projects/mission/progress.md
 - 현재 진행 중인 Step은 미완료 항목이 남아 있는 가장 앞 Step
 - 세부 코드 예시는 `~/.claude/plans/c-users-wchang101-downloads-2-statics-vi-generic-candy.md` 참고
 
+## 패키지 관리자
+
+- **server**: `yarn` 사용 (`yarn add`, `yarn add -D`, `yarn test` 등)
+- **client**: `yarn` 사용 (`yarn add`, `yarn add -D`, `yarn dev` 등)
+- `npm` 명령어 사용 금지
+
 ## 진행 원칙
 
 - 단계별로 실행 → 보고 → 사용자 승인 → 다음 Step 순서를 지킨다

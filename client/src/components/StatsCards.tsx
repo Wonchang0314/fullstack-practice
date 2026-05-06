@@ -11,7 +11,7 @@ export default function StatsCards({ stats }: { stats: ProductStatsResponse }) {
   ];
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid grid-cols-4 gap-4" aria-label="통계 카드">
       {cards.map(({ label, value, valueClass }) => (
         <div key={label} className="rounded-lg bg-gray-100 p-5">
           <p className="text-sm text-gray-500">{label}</p>

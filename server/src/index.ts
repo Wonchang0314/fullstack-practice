@@ -20,8 +20,13 @@ const spec = generateOpenApiSpec();
 app.get('/api-spec.json', (_req, res) => res.json(spec));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(spec));
 
-app.listen(PORT, () => {
-  console.log(`서버 실행 중: http://localhost:${PORT}`);
-  console.log(`Swagger UI: http://localhost:${PORT}/api-docs`);
-  console.log(`OpenAPI JSON: http://localhost:${PORT}/api-spec.json`);
-});
+export default app;
+
+// VITEST 환경(테스트)에서는 listen 생략 — supertest가 앱 객체를 직접 바인딩
+if (!process.env['VITEST']) {
+  app.listen(PORT, () => {
+    console.log(`서버 실행 중: http://localhost:${PORT}`);
+    console.log(`Swagger UI: http://localhost:${PORT}/api-docs`);
+    console.log(`OpenAPI JSON: http://localhost:${PORT}/api-spec.json`);
+  });
+}
