@@ -49,6 +49,10 @@ mission/
         └── lib/queryClient.ts      # QueryClient 기본 설정
 ```
 
+## 참고 문서
+
+- [`docs/e2e-patterns.md`](docs/e2e-patterns.md) — Playwright E2E 패턴, 비동기 렌더링 주의사항, 로케이터 전략
+
 ## API 작업 시 참고
 
 - **서버 스키마 변경** → `server/src/schemas/product.schema.ts` 수정 후 서버 재시작
