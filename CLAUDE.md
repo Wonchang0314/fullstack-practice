@@ -22,8 +22,29 @@ Read: /home/wchang101/projects/mission/progress.md
 
 ```
 mission/
-├── progress.md       # 단계별 작업 체크리스트 (항상 최신 상태 유지)
-├── README.md
-├── server/           # Express + Prisma + TypeScript (포트 4000)
-└── client/           # Vite + React + TypeScript + TailwindCSS
+├── progress.md
+├── server/                         # Express + Prisma + TypeScript (포트 4000)
+│   └── src/
+│       ├── index.ts                # 진입점, /api-docs (Swagger UI), /api-spec.json (raw JSON)
+│       ├── routes/products.ts      # GET /api/products, GET /api/products/stats
+│       ├── schemas/product.schema.ts  # Zod 스키마 (타입 + OpenAPI 등록 일원화)
+│       ├── lib/openapi.ts          # Registry 싱글톤 + 스펙 생성
+│       └── lib/prisma.ts
+└── client/                         # Vite + React + TypeScript + TailwindCSS
+    ├── openapi-ts.config.ts        # hey-api 설정 (input: /api-spec.json → output: src/api)
+    └── src/
+        ├── api/                    # hey-api 자동 생성 (yarn api:gen으로 재생성)
+        │   ├── types.gen.ts        # Product, ProductsResponse 등 타입
+        │   ├── sdk.gen.ts          # getProducts(), getProductsStats() API 함수
+        │   └── @tanstack/react-query.gen.ts  # getProductsOptions() 등 query options
+        ├── hooks/
+        │   ├── useProducts.ts      # useQuery(getProductsOptions(...))
+        │   └── useProductStats.ts  # useQuery(getProductsStatsOptions())
+        └── lib/queryClient.ts      # QueryClient 기본 설정
 ```
+
+## API 작업 시 참고
+
+- **서버 스키마 변경** → `server/src/schemas/product.schema.ts` 수정 후 서버 재시작
+- **클라이언트 타입 동기화** → 서버 실행 중 `cd client && yarn api:gen` 실행 (`src/api/` 재생성)
+- **새 API 엔드포인트 추가** 시: ① Zod 스키마 정의 → ② `registry.registerPath()` 등록 → ③ `yarn api:gen`
