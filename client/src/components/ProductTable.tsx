@@ -8,7 +8,7 @@ const priceFormatter = new Intl.NumberFormat("ko-KR", {
 
 export default function ProductTable({ items }: { items: Product[] }) {
   return (
-    <table className="w-full text-sm">
+    <table className="w-full text-sm" aria-label="상품 목록">
       <thead className="bg-gray-100 text-gray-500">
         <tr>
           {["ID", "상품명", "카테고리", "가격", "재고", "상태", "등록일"].map(

@@ -16,7 +16,7 @@ export default function Pagination({
   const end = Math.min(page * pageSize, total);
 
   return (
-    <div className="flex items-center justify-between">
+    <nav className="flex items-center justify-between" aria-label="페이지네이션">
       <span className="text-sm text-gray-500">
         {start}–{end} / {total}건
       </span>
@@ -47,6 +47,6 @@ export default function Pagination({
           →
         </button>
       </div>
-    </div>
+    </nav>
   );
 }
