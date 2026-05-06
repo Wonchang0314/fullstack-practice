@@ -29,6 +29,19 @@
 - [ ] `curl`로 두 엔드포인트 응답 검증
 - [ ] 결과 보고 후 다음 Step 승인 받기
 
+## Step 3.5 — 서버 OpenAPI 스펙 & Swagger UI
+
+> Step 3의 수동 타입 정의를 Zod 스키마로 교체하고, 스펙을 자동 생성해 Swagger UI로 서빙
+
+- [ ] 패키지 설치 (`@asteasolutions/zod-to-openapi`, `zod`, `swagger-ui-express`, `@types/swagger-ui-express`)
+- [ ] `src/schemas/product.schema.ts` — Zod 스키마 정의 (Product, ProductStatus, 응답 타입)
+- [ ] `src/lib/openapi.ts` — OpenApiGeneratorV3 + Registry 설정
+- [ ] 각 라우트에 `registry.registerPath()` 추가
+- [ ] `GET /api-docs` 엔드포인트 추가 (swagger-ui-express)
+- [ ] 기존 `src/types/product.ts` 제거 후 Zod 스키마에서 타입 추론으로 대체
+- [ ] 브라우저에서 `/api-docs` 접속 확인
+- [ ] 결과 보고 후 다음 Step 승인 받기
+
 ## Step 4 — 클라이언트 셋업 (`client/`)
 - [ ] Vite + React + TypeScript 템플릿으로 스캐폴드
 - [ ] 런타임/개발 의존성 설치 (TanStack Query, axios, Tailwind, postcss, autoprefixer)
