@@ -51,14 +51,15 @@
 - [ ] dev 서버 부팅 확인
 - [ ] 결과 보고 후 다음 Step 승인 받기
 
-## Step 5 — 클라이언트 데이터 레이어
-- [ ] 공통 타입 정의 (Product, ProductStatus, 응답 타입)
-- [ ] `lib/httpClient.ts` — axios 인스턴스 (baseURL은 `VITE_API_BASE_URL` 우선, 없으면 `/api`)
-- [ ] `.env.example` 추가
-- [ ] `lib/queryClient.ts` — QueryClient 기본 설정
-- [ ] `api/products.ts` — 도메인 API 함수
-- [ ] `useProducts`, `useProductStats` 훅 구현
-- [ ] 결과 보고 후 다음 Step 승인 받기
+## Step 5 — 클라이언트 데이터 레이어 (hey-api)
+- [x] `@hey-api/openapi-ts` + `@hey-api/client-axios` 설치
+- [x] `openapi-ts.config.ts` 작성 (input: `/api-spec.json`)
+- [x] `package.json`에 `api:gen` 스크립트 추가
+- [x] `yarn api:gen` 실행 → `src/client/` 자동 생성 (types, sdk, TanStack Query options)
+- [x] `useProducts`, `useProductStats` 훅 구현
+- [x] `src/App.tsx` broken imports 제거
+- [x] `yarn build` 성공 확인
+- [x] 결과 보고 후 다음 Step 승인 받기
 
 ## Step 6 — UI 컴포넌트 & 대시보드 페이지
 - [ ] `StatsCards` — 상태별 색상 매핑 포함

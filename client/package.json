@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "api:gen": "openapi-ts"
   },
   "dependencies": {
+    "@hey-api/client-axios": "^0.9.1",
     "@tanstack/react-query": "^5.100.9",
     "axios": "^1.16.0",
     "react": "^19.2.5",
@@ -17,6 +19,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@hey-api/openapi-ts": "^0.97.1",
     "@tailwindcss/postcss": "^4.2.4",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
